@@ -1,0 +1,29 @@
+#!/bin/sh
+
+sink="@DEFAULT_SINK@"
+
+case $BLOCK_BUTTON in
+	1) pactl set-sink-mute "$sink" toggle ;;
+	2) pavucontrol & ;;
+	4) pactl set-sink-volume "$sink" +5% ;;
+	5) pactl set-sink-volume "$sink" -5% ;;
+esac
+
+mute="$(pactl get-sink-mute "$sink" | awk '{print $2}')"
+vol="$(pactl get-sink-volume "$sink" | awk -F'/' 'NR==1{print $2}' | sed 's/ //;s/%//')"
+
+[ -z "$vol" ] && vol=0
+
+if [ "$mute" = "yes" ]; then
+	echo "󰖁"
+else
+	if [ "$vol" -gt 70 ]; then
+		icon=󰕾
+	elif [ "$vol" -gt 40 ]; then
+		icon=󰖀
+	else
+		icon=󰕿
+	fi
+	echo "$icon $vol"
+fi
+

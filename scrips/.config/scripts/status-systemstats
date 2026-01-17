@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cputemp=$(sensors | awk '/id 0/ {print $4}' | sed 's/+//')
+
+echo "CPU $cputemp"
