@@ -1,5 +1,11 @@
 #!/bin/sh
 
-cputemp=$(sensors | awk '/id 0/ {print $4}' | sed 's/+//')
+cputemp=$(sensors | awk '/Package id 0:/ {print $4}' | sed 's/+//')
+gputemp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null)
+mem_used=$(free -h | awk '/Mem:/ {print $3}')
 
-echo "CPU $cputemp"
+if [ -n "$gputemp" ]; then
+    echo "CPU $cputemp | GPU ${gputemp}°C | RAM $mem_used"
+else
+    echo "CPU $cputemp | RAM $mem_used"
+fi

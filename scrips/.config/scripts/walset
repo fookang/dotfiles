@@ -1,0 +1,5 @@
+#!/bin/sh
+
+feh --bg-fill "$1" && wal -i "$1"
+
+xrdb-refresh

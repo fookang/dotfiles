@@ -4,7 +4,7 @@ sink="@DEFAULT_SINK@"
 
 case $BLOCK_BUTTON in
 	1) pactl set-sink-mute "$sink" toggle ;;
-	2) pavucontrol & ;;
+	3) pavucontrol & ;;
 	4) pactl set-sink-volume "$sink" +5% ;;
 	5) pactl set-sink-volume "$sink" -5% ;;
 esac

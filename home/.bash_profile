@@ -3,6 +3,7 @@
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.profile ]] && . ~/.profile
 
 # follow XDG base dir specification
 export XDG_CONFIG_HOME="$HOME/.config"
