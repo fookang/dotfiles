@@ -3,6 +3,11 @@ local function map(m, k, v)
 	vim.keymap.set(m, k, v, { noremap = true, silent = true })
 end
 
+-- set leader
+map("", "<Space>", "<Nop>")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- buffers
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
@@ -24,11 +29,6 @@ map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>')
 map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>')
 map('n', '<A-0>', '<Cmd>BufferLast<CR>')
 map('n', '<A-p>', '<Cmd>BufferPin<CR>')
-
--- set leader
-map("", "<Space>", "<Nop>")
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 
 
