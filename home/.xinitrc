@@ -11,8 +11,8 @@ xset-lock -- ~/.config/script/i3-lock &
 
 picom --config ~/.config/picom/picom.conf &
 
-(sleep 2; dwmblocks) &
-~/.config/scripts/sig-volume
+(dwmblocks) &
+~/.config/scripts/sig-volume & disown
 
 export DESKTOP_SESSION=dwm
 exec dwm
