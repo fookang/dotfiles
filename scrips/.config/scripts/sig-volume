@@ -2,8 +2,8 @@
 
 pactl subscribe | while read -r line; do
     case "$line" in
-        *"sink"*)
-            kill -SIGRTMIN+8 "$(pidof dwmblocks)"
+        *"sink"*|*" client "*)
+            pkill -SIGRTMIN+8 dwmblocks
             ;;
     esac
 done
