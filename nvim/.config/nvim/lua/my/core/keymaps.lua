@@ -5,8 +5,8 @@ vim.g.mapleader = " "
 keymap.set({ "n", "v" }, "<Space>", "<Nop>", { desc = "Clear Space key" })
 
 -- buffers
-keymap.set("n", "<S-l>", "<Cmd>bnext<CR>", { desc = "Switch to next buffer" })
-keymap.set("n", "<S-h>", "<Cmd>bprevious<CR>", { desc = "Switch to previous buffer" })
+keymap.set("n", "<S-h>", "<Cmd>bnext<CR>", { desc = "Switch to next buffer" })
+keymap.set("n", "<S-l>", "<Cmd>bprevious<CR>", { desc = "Switch to previous buffer" })
 keymap.set("n", "<leader>q", "<Cmd>BufferClose<CR>", { desc = "Close buffer" })
 keymap.set("n", "<leader>Q", "<Cmd>BufferClose!<CR>")
 keymap.set("n", "<leader>U", "<Cmd>bufdo bd<CR>") --close all
@@ -28,3 +28,6 @@ keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>')
 
 
 keymap.set("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
+keymap.set("n", "<leader>e", "<Cmd>NvimTreeFocus<CR>", {desc = "Focus file tree"})
+keymap.set("n", "<leader>h", "<Cmd>NvimTreeResize -5<CR>", { desc = "Decrease file tree size" })
+keymap.set("n", "<leader>l", "<Cmd>NvimTreeResize +5<CR>", { desc = "Increase file tree size" })
