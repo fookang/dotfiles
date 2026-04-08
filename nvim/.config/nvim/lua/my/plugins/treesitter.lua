@@ -2,19 +2,32 @@ return {
     'nvim-treesitter/nvim-treesitter',
     event = { "BufReadPre", "BufNewFile" },
     build = ':TSUpdate',
-    branch = "main",
     config = function()
-        local ensureInstalled = {
-            "c", 
-            "cpp", 
-            "systemverilog",
-            "lua",
-            "gitignore",
-        }
-        local alreadyInstalled = require("nvim-treesitter.config").get_installed()
-        local parsersToInstall = vim.iter(ensureInstalled)
-        :filter(function(parser) return not vim.tbl_contains(alreadyInstalled, parser) end)
-        :totable()
-        require("nvim-treesitter").install(parsersToInstall)
-    end,
+        local treesitter = require("nvim-treesitter")
+
+        treesitter.setup({ -- enable syntax highlighting
+            highlight = {
+                enable = true,
+            },
+            -- enable indentation
+            indent = { enable = true },
+            -- ensure these language parsers are installed
+            ensure_installed = {
+                "c", 
+                "cpp", 
+                "systemverilog",
+                "lua",
+                "gitignore",
+            },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-space>",
+                    node_incremental = "<C-space>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>",
+                },
+            },
+        })
+  end,
 }

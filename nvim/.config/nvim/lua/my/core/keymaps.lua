@@ -26,8 +26,22 @@ keymap.set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>')
 keymap.set('n', '<A-0>', '<Cmd>BufferLast<CR>')
 keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>')
 
+-- NvimTree
+keymap.set("n", "<leader>ee", "<Cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
+keymap.set("n", "<leader>ef", "<Cmd>NvimTreeFocus<CR>", {desc = "Focus file tree"})
+keymap.set("n", "<leader>eh", "<Cmd>NvimTreeResize -5<CR>", { desc = "Decrease file tree size" })
+keymap.set("n", "<leader>el", "<Cmd>NvimTreeResize +5<CR>", { desc = "Increase file tree size" })
+keymap.set("n", "<leader>ec", "<Cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
 
-keymap.set("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
-keymap.set("n", "<leader>e", "<Cmd>NvimTreeFocus<CR>", {desc = "Focus file tree"})
-keymap.set("n", "<leader>h", "<Cmd>NvimTreeResize -5<CR>", { desc = "Decrease file tree size" })
-keymap.set("n", "<leader>l", "<Cmd>NvimTreeResize +5<CR>", { desc = "Increase file tree size" })
+-- Basic command
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+
+-- Telescope
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+
+-- AutoSession
+keymap.set("n", "<leader>wr", "<cmd>AutoSession restore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
+keymap.set("n", "<leader>ws", "<cmd>AutoSession save<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory

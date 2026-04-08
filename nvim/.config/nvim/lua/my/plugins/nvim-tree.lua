@@ -14,7 +14,7 @@ return {
                 },
             },
             view = {
-                width = 25,
+                width = 35,
                 side = 'left',
             },
             git = {

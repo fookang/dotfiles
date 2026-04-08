@@ -7,6 +7,7 @@ return {
                 "lua_ls",
                 "svlangserver",
                 "verible",
+                "qmlls"
             }
         },
         dependencies = {
