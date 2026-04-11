@@ -1,0 +1,90 @@
+@import url("/home/fookang/.cache/wal/colors-waybar.css");
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar {
+  background: alpha(@color0, 0.75);
+  color: @foreground;
+}
+
+tooltip {
+  background: @background;
+  border: 1px solid @color8;
+  border-radius: 0px;
+}
+
+tooltip label {
+  color: @foreground;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  margin: 0;
+  padding: 0
+}
+
+#workspaces {
+  margin: 0;
+  padding: 0 2px;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  margin: 0 1px 0 0;
+  background: transparent;
+  color: @foreground;
+  border-bottom: 1px solid transparent;
+}
+
+#workspaces button.active {
+  background: @color8;
+  color: @foreground;
+  border-bottom: 1px solid white;
+}
+
+#window {
+  padding: 0 6px;
+  margin: 0;
+  color: @foreground;
+}
+#taskbar button.active {
+  background: @color8;
+}
+
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#custom-notification,
+#custom-sysinfo {
+  padding: 2 5px;
+  color: @foreground; 
+}
+
+@keyframes blink {
+  to {
+    background-color: @color1;
+    color: @background;
+  }
+}
+
+#battery.warning:not(.charging) {
+  background: @color3;
+  color: @background;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+

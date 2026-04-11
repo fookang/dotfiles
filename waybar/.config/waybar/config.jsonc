@@ -1,0 +1,113 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    //"modules-center": ["wlr/taskbar"],
+    "modules-right": ["custom/sysinfo", "pulseaudio", "network", "custom/notification", "clock"],
+    "height": 20,
+
+
+    // Module left
+    "hyprland/workspaces": {
+      "format": "{name}",
+      "persistent-workspaces": {
+      },
+      "show-special": true
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 80,
+        "separate-outputs": false
+    },
+
+    // Module center
+    "wlr/taskbar": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "icon-size": 20
+    },
+
+    // Module Right
+    "clock": {
+      "format": "{:%a, %d. %b  %H:%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode-mon-col": 3,
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    },
+
+    "battery": {
+      "format": "{capacity}%  {icon}",
+      "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/notification": {
+      "tooltip": true,
+      "format": "{0} {icon} |",
+      "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂜",
+        "dnd-notification": "󰂠",
+        "dnd-none": "󰪓",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰪑"
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
+    },
+
+    "custom/sysinfo": {
+        "exec": "~/.config/scripts/status-systemstats",
+        "interval": 3,
+        "return-type": "text",
+        "tooltip": false
+    },
+
+    "network": {
+      "format-wifi": "{essid}  {icon} |",
+      "format-ethernet": "{icon} {ipaddr} |",
+      "format-disconnected": "{icon} |",
+      "tooltip": false,
+      "max-length": 50,
+      "format-icons": {
+        "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "ethernet": [" "],
+        "disconnected": ["🌐"]
+      }
+    },
+
+   "pulseaudio": {
+      "format": "{icon}  {volume} |",
+      "format-bluetooth": "{icon} {volume}",
+      "format-muted": "  |",
+      "format-icons": {
+        "default": ["", "", "󰕾", ""]
+      },
+      "tooltip": false,
+      "scroll-step": 5,
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-click-right": "pavucontrol",
+      "ignored-sinks": ["Easy Effects Sink"]
+    }
+  }
+]
