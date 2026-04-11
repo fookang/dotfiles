@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dir="$HOME/Pictures/Screenshots"
+mkdir -p "$dir"
+
+filename="$(date +%Y-%m-%d_%H:%M:%S).png"
+
+if [ "$1" = "rc" ]; then
+    hyprshot -m region --freeze --clipboard-only
+elif [ "$1" = "rs" ]; then
+    hyprshot -m region --freeze -o "$dir" -f "$filename"
+fi
