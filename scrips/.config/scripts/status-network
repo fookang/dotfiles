@@ -32,6 +32,6 @@ if [ -d "/sys/class/net/$interface/wireless" ]; then
 
 	echo "$icon $ssid $ip_addr"
 else
-	echo "󰈀  $ip_addr"
+	echo "   $ip_addr"
 fi
 
